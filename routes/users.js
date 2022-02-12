@@ -14,8 +14,11 @@ router.get('/', (req, res) => {
 
 //users/2 req.params--parameters to the funtion
 router.get('/:id', (req, res) => {
-    
-    // res.send("get Id route")
+    const id = req.params.id
+    const foundUser = users.find((user) => {
+       user.id === id 
+    })
+    res.send(foundUser)
 })
 
 router.post('/', (req, res) => {
