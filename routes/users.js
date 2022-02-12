@@ -32,5 +32,13 @@ router.post('/', (req, res) => {
     res.send(`new user ${user.firstName} added!`)
 })
 
+router.delete('/:id', (req, res) => {
+    const id = req.params.id
+    users.filter((user) => {
+        if (user.id !=== id) {
+            res.send(`${user.firstName} has been deleted`)
+        } 
+    })
+})
 
 export default router
