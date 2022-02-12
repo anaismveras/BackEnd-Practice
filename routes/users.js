@@ -8,11 +8,13 @@ const users = []
 //users/2 req.params--parameters to the funtion
 router.get('/:id', (req, res) => {
     const id = req.params.id
-    const foundUser = users.find((user) => {
-       user.id === id 
+    users.find((user) => {
+        if (user.id === id) {
+            res.send(user)
+        } else {
+            res.send('No User By This ID')
+        }
     })
-    console.log('this is found user', foundUser)
-    // res.send(foundUser)
 })
 
 //all the routes in this already start with /users because it is in the index.js
