@@ -5,6 +5,16 @@ const router = express.Router()
 
 const users = []
 
+//users/2 req.params--parameters to the funtion
+router.get('/:id', (req, res) => {
+    const id = req.params.id
+    const foundUser = users.find((user) => {
+       user.id === id 
+    })
+    console.log('this is found user', foundUser)
+    // res.send(foundUser)
+})
+
 //all the routes in this already start with /users because it is in the index.js
 //browsers can only make get request
 router.get('/', (req, res) => {
@@ -12,14 +22,6 @@ router.get('/', (req, res) => {
     res.send(users)
 })
 
-//users/2 req.params--parameters to the funtion
-router.get('/:id', (req, res) => {
-    const id = req.params.id
-    const foundUser = users.find((user) => {
-       user.id === id 
-    })
-    res.send(foundUser)
-})
 
 router.post('/', (req, res) => {
     const user = req.body
